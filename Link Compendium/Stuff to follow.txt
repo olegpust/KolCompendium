@@ -1,0 +1,5 @@
+A bunch of projects and scripts i follow and recommend:
+
+ccascend https://sourceforge.net/p/ccascend/code/1412/
+kolmafia jenkins: https://ci.kolmafia.us/
+Yaaz: https://github.com/mapledyne/yaaz

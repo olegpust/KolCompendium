@@ -3,3 +3,9 @@ A bunch of projects and scripts i follow and recommend:
 ccascend https://sourceforge.net/p/ccascend/code/1412/
 kolmafia jenkins: https://ci.kolmafia.us/
 Yaaz: https://github.com/mapledyne/yaaz
+Ezandora's Guide: https://github.com/Ezandora/Guide
+
+Iotm:
+Ezandora's Voting Booth: https://github.com/Ezandora/Voting-Booth
+Ezandora's Bastille: https://github.com/Ezandora/Bastille/
+Ezandora's Neverending Party: https://github.com/Ezandora/Neverending-Party

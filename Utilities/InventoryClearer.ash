@@ -40,9 +40,11 @@ void CleanMeatItems()
 	item_map[24] = $item[stolen meatpouch];
 	item_map[25] = $item[Warm Subject gift certificate];
 	
-	foreach key in item_map{
+	foreach key in item_map
+	{
 		item_count = item_amount(item_map[key]);
-		if(item_count > 0){
+		if(item_count > 0)
+		{
 			use(item_count, item_map[key]);
 		}
 	}
@@ -54,9 +56,11 @@ void CleanMeatItems()
 	item_map[2] = $item[dense meat stack];
 	item_map[2] = $item[fat stacks of cash];
 	
-	foreach key in item_map{
+	foreach key in item_map
+	{
 		item_count = item_amount(item_map[key]);
-		if(item_count > 0){
+		if(item_count > 0)
+		{
 			autosell(item_count, item_map[key]);
 		}
 	}

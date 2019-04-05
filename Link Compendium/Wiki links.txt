@@ -3,12 +3,14 @@ http://kol.coldfront.net/thekolwiki/index.php/Dark_Gyffte
 
 Quests:
 http://kol.coldfront.net/thekolwiki/index.php/Spookyraven_quest
+http://kol.coldfront.net/thekolwiki/index.php/Spooky_Temple_Map_Quest
 L9: http://kol.coldfront.net/thekolwiki/index.php/Orc_Chasm_Quest
 L13: http://kol.coldfront.net/thekolwiki/index.php/Naughty_Sorceress_Quest
 
 Iotms Mechanics:
 http://kol.coldfront.net/thekolwiki/index.php/Latte_Shop
 http://kol.coldfront.net/thekolwiki/index.php/Voting_Booth
+http://kol.coldfront.net/thekolwiki/index.php/The_Neverending_Party
 
 Must-Dos:
 http://kol.coldfront.net/thekolwiki/index.php/The_Daily_Dungeon
@@ -16,6 +18,10 @@ http://kol.coldfront.net/thekolwiki/index.php/Spookyraven_quest
 
 Game mechanics:
 http://kol.coldfront.net/thekolwiki/index.php/Clover_Adventures
+http://kol.coldfront.net/thekolwiki/index.php/Semi-rares
 
 Important foods:
 http://kol.coldfront.net/thekolwiki/index.php/Grue_egg_omelette
+
+Locations:
+http://kol.coldfront.net/thekolwiki/index.php/The_Haunted_Ballroom

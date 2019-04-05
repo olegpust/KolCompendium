@@ -10,6 +10,7 @@ skillsMap[0] = $skill[Advanced Saucecrafting];
 skillsMap[1] = $skill[Perfect Freeze];
 skillsMap[2] = $skill[Advanced Cocktailcrafting];
 skillsMap[3] = $skill[Pastamastery];
+skillsMap[4] = $skill[Acquire Rhinestones];
 
 item[int] itemsMap;
 itemsMap[0] = $item[The Cocktail Shaker];
@@ -25,7 +26,17 @@ void doDailyDeeds()
 		{
 			if(is_unrestricted(skillsMap[dailySkill]))
 			{
-				use_skill(skillsMap[dailySkill]);
+				if(my_mp() > mp_cost(skillsMap[dailySkill]))
+				{
+					use_skill(skillsMap[dailySkill]);
+				}
+				else
+				{
+					//Recover Mp to half of what i can have.
+					restore_mp(my_maxmp()/2);
+					//TODO: Make sure you cannot fail this part.
+					use_skill(skillsMap[dailySkill]);
+				}
 			}
 			else
 			{

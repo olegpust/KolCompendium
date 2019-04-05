@@ -5,7 +5,12 @@
 script "LoggoutOutfitter.ash";
 #notify "Rufus Flecher";
 
-void main()
+void WearLoggoutSuit()
 {
 	maximize("adv", false);
 }
+void main()
+{
+	WearLoggoutSuit();
+}
+

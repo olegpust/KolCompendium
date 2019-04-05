@@ -6,8 +6,14 @@ script "LoggoutOutfitter.ash";
 
 void main()
 {
-	maximize("cold resistance, spooky resistance",1000, 1000, true,);
-    print(numeric_modifier("Generated:_spec", "cold resistance"));
-    print(numeric_modifier("Generated:_spec", "Maximum HP"));
-    print(numeric_modifier("Generated:_spec", "Spooky Resistance"));
+	//maximize("cold resistance, spooky resistance", true,);
+    //print(numeric_modifier("Generated:_spec", "cold resistance"));
+    //print(numeric_modifier("Generated:_spec", "Maximum HP"));
+    //print(numeric_modifier("Generated:_spec", "Spooky Resistance"));
+	//maximize("Initiative ", false);
+	//print(numeric_modifier("Generated:_spec", "Maximum HP"));
+	//print(numeric_modifier("Generated:_spec", "Initiative "));
+	//maximize("mus ", false);
+	//maximize("all res", false);
+	maximize("stench damage", false);
 }

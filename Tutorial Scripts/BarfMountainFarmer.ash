@@ -21,23 +21,27 @@ void maintainBuffs();
 
 void main()
 {
-	//doDailyDeeds()
-	//voteInVotingBooth();
-	//Use muscle setup due to use of brutal brogues for +8 wt.
-	//main@bastille("muscle");
-	//Buffme();
-	//FillSelfWithGoodness();
+	doDailyDeeds();
+	voteInVotingBooth();
+	Use muscle setup due to use of brutal brogues for +8 wt.
+	main@bastille("muscle");
+	Buffme();
+	FillSelfWithGoodness();
 	
 	//Buy a dinsey pass if you dont have one:
-	if(available_amount($item[one-day tickets to Dinseylandfill]) < 1)
-		buy(1, $item[one-day tickets to Dinseylandfill])
-	if(available_amount($item[one-day tickets to Dinseylandfill]) >= 1)
-		use(1,$item[one-day tickets to Dinseylandfill])
+	item it = $item[8204];
+	if(available_amount(it) < 1)
+	{
+		buy(1, it);
+	}
+	if(available_amount(it) >= 1)
+	{
+		use(1, it);
+	}
 	else
 	{
 		//Something went wrong..
-		print("No ticket found: one-day tickets to Dinseylandfill", "red");
-		break;
+		print("No ticket found: one-day ticket to Dinseylandfill", "red");
 	}
 		
 	//Take the best money familiar i have, which is not the hobo monkey..
@@ -51,8 +55,8 @@ void main()
 		boolean retval = adv1($location[Barf Mountain], 1,'');
 	}
 	
-	//WearLoggoutSuit();
+	WearLoggoutSuit();
 	
-	//Nightcap()ף
+	Nightcap();
+	
 }
-

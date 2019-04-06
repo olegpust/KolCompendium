@@ -8,6 +8,9 @@ script "BarfMountainFarmer.ash";
 
 import <KolCompendium/Utilities/BaseDailyDeeds.ash>
 import <KolCompendium/Utilities/LoggoutOutfitter.ash>
+import <KolCompendium/Utilities/Overdrinker.ash>
+import <KolCompendium/Utilities/BarfMountainEater.ash>
+import <KolCompendium/Utilities/Buffer.ash>
 import <bastille.ash>
 import <VotingBooth.ash>
 
@@ -22,13 +25,34 @@ void main()
 	//voteInVotingBooth();
 	//Use muscle setup due to use of brutal brogues for +8 wt.
 	//main@bastille("muscle");
+	//Buffme();
+	//FillSelfWithGoodness();
 	
+	//Buy a dinsey pass if you dont have one:
+	if(available_amount($item[one-day tickets to Dinseylandfill]) < 1)
+		buy(1, $item[one-day tickets to Dinseylandfill])
+	if(available_amount($item[one-day tickets to Dinseylandfill]) >= 1)
+		use(1,$item[one-day tickets to Dinseylandfill])
+	else
+	{
+		//Something went wrong..
+		print("No ticket found: one-day tickets to Dinseylandfill", "red");
+		break;
+	}
+		
+	//Take the best money familiar i have, which is not the hobo monkey..
+	if(use_familiar($familiar[Cornbeefadon]))
+	{
+		cli_execute("maximize meat, +equip cheap sunglasses -tie");
+	}
 	
-	
-	//Maximize("Meat Drop",false);
+	while((my_adventures() > 1) && (my_inebriety() <= inebriety_limit()))
+	{
+		boolean retval = adv1($location[Barf Mountain], 1,'');
+	}
 	
 	//WearLoggoutSuit();
 	
-	//TODO: Overdrinker script..
+	//Nightcap()ף
 }
 

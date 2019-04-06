@@ -23,7 +23,7 @@ void main()
 {
 	doDailyDeeds();
 	voteInVotingBooth();
-	Use muscle setup due to use of brutal brogues for +8 wt.
+	//Use muscle setup due to use of brutal brogues for +8 wt.
 	main@bastille("muscle");
 	Buffme();
 	FillSelfWithGoodness();

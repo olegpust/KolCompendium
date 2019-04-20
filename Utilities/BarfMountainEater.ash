@@ -45,7 +45,7 @@ void FillSelfWithGoodness()
 	if(inebriety_limit() != my_inebriety())
 	{
 		// Ode time, TODO: Check if you have ode, if so use it, else get a buff.
-		int timesToCastOde = ceil(inebriety_limit()-my_inebriety()/10)
+		int timesToCastOde = ceil(inebriety_limit()-my_inebriety()/10);
 		
 		if(my_mp() > timesToCastOde * mp_cost($skill[The Ode to Booze]))
 		{
@@ -78,20 +78,20 @@ void FillSelfWithGoodness()
 	
 	//Spleen and buff time:
 	print("Spleening..", "Green");
-	if(have_effect($effect[Smithsness Presence] <=390))
+	if(have_effect($effect[Smithsness Presence]) <= 390)
 	{
 		if(item_amount($item[handful of Smithereens]) < 4)
 			buy(4 - item_amount($item[handful of Smithereens]), $item[handful of Smithereens]);
 		chew(4, $item[handful of Smithereens]);
 	}
-	if(have_effect($effect[Merry Smithsness] <= 400))
+	if(have_effect($effect[Merry Smithsness]) <= 400)
 	{
 		if(item_amount($item[Flaskfull of Hollow]) < 3)
 			buy(3 - item_amount($item[Flaskfull of Hollow]), $item[Flaskfull of Hollow]);
 		use(3, $item[Flaskfull of Hollow]);	
 	}
 	//Fill yourself on Nasal spray, because its cheap.
-	if(have_effect($effect[Wasabi Sinuses] < 10)
+	if(have_effect($effect[Wasabi Sinuses]) < 10)
 	{
 		if(item_amount($item[Knob Goblin nasal spray]) < spleen_limit() - my_spleen_use())
 			buy(spleen_limit() - my_spleen_use() - item_amount($item[Knob Goblin nasal spray]), $item[Knob Goblin nasal spray]);

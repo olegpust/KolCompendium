@@ -11,6 +11,7 @@ skillsMap[1] = $skill[Perfect Freeze];
 skillsMap[2] = $skill[Advanced Cocktailcrafting];
 skillsMap[3] = $skill[Pastamastery];
 skillsMap[4] = $skill[Acquire Rhinestones];
+skillsMap[5] = $skill[Prevent Scurvy and Sobriety];
 
 item[int] itemsMap;
 itemsMap[0] = $item[The Cocktail Shaker];

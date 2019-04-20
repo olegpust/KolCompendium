@@ -6,7 +6,12 @@ script "Buffer.ash";
 
 void Buffme()
 {
-	chat_private("Flesh Puppet","buffme");
+//TODO: 400 was chosen arbitarially, should consider making this function take a parameter.
+
+	if(have_effect($effect[Polka of Plenty] < 400)) 
+		//Beg for a buff from the buffbot.
+		chat_private("Flesh Puppet","buffme");
+		
 	if(have_effect($effect[How to Scam Tourists]) < 400)
 	{
 		if(item_amount($item[How to Avoid Scams]) > 20)
@@ -19,37 +24,23 @@ void Buffme()
 			use(20, $item[How to Avoid Scams]);
 		}
 	}
-	if(my_mp() > 30*mp_cost($skill[Leash of Linguini]))
+	if(have_effect($effect[Leash of Linguini] < 400))
+	{
+	int timesToCastLeash = ceil(40-$effect[Leash of Linguini]/10)
+	
+		if(my_mp() > timesToCastLeash*mp_cost($skill[Leash of Linguini]))
 		{
-			int i = 0;
-			while(i<30)
 			{
-				use_skill($skill[Leash of Linguini]);
-				i++;
-				wait(1); 
+				use_skill(timesToCastLeash,$skill[Leash of Linguini]);
+			}
+			else
+			{
+				restore_mp(timesToCastLeash*10);
+				use_skill(timesToCastLeash,$skill[Leash of Linguini]);
+
 			}
 		}
-		else
-		{
-			restore_mp(361);
-			int i = 0;
-			while(i<30)
-			{
-				use_skill($skill[Leash of Linguini]);
-				i++;
-				wait(1); 
-			}
-		}
-		// Wait for the buff to appear.
-		if(have_effect($effect[Leash of Linguini]) < 350)
-		{
-			repeat 
-			{
-				wait(5); 
-				refresh_status();
-			}
-			until (have_effect($effect[Leash of Linguini]) > 350);
-		}	
+	}
 }
 
 void main()

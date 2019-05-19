@@ -79,9 +79,11 @@ void main()
 	
 	while((my_adventures() > 20) && (my_inebriety() <= inebriety_limit()))
 	{
-		if(my_mp() < 50){
-			restore_mp(50);
+		if(my_mp() < 70){
+			restore_mp(70);
 		}
+		if(my_hp < 100) // Blood bond is a troublesome skill, so need to check youre not dying now too fast. More mp cost per round but better money gain.
+			use_skill(1, $skill[Cannelloni Cocoon]); 
 		boolean retval = adv1($location[Barf Mountain], 1,'');
 	}
 		

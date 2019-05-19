@@ -1,7 +1,7 @@
 #This script is for learning pourpses. 
 #This script contains basic item manipulation.
 
-script "LoggoutOutfitter.ash";
+script "MaxInit.ash";
 #notify "Rufus Flecher";
 
 void main()
@@ -10,12 +10,12 @@ void main()
     //print(numeric_modifier("Generated:_spec", "cold resistance"));
     //print(numeric_modifier("Generated:_spec", "Maximum HP"));
     //print(numeric_modifier("Generated:_spec", "Spooky Resistance"));
-	//maximize("Initiative ", false);
+	maximize("Initiative ", false);
 	//print(numeric_modifier("Generated:_spec", "Maximum HP"));
 	//print(numeric_modifier("Generated:_spec", "Initiative "));
 	//maximize("mus ", false);
 	//maximize("moxie ", false);
 	//maximize("all res", false);
 	//maximize("cold damage", false);
-	maximize("spooky damage", false);
+	//maximize("spooky damage", false);
 }

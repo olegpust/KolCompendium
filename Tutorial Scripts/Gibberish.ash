@@ -21,7 +21,11 @@ void run()
 	//cli_execute("ashq run_choice(5)");
 	//string page = visit_url("place.php?whichplace=airport_stench&action=airport3_tunnels");
 	//page = visit_url("choice.php?whichchoice=1067&option=6");
-	set_location(Mysterious Island Arena);
+	
+	//set_location(Mysterious Island Arena);
+	
+	string page = visit_url("place.php?whichplace=town_wrong&action=townwrong_boxingdaycare", false);
+	page = visit_url("choice.php?pwd=&whichchoice=1334&option=1");
 }
 
 /*

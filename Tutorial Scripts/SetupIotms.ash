@@ -5,11 +5,14 @@ script "SetupIotms.ash";
 
 import <KolCompendium/Utilities/BoomBox.ash>
 import <KolCompendium/Utilities/Vykea.ash>
+import <KolCompendium/Utilities/BoxingDayCare.ash>
 
 void setupIotms()
 {
-	UseMeatSong();
-	MakeVykeaCouch();
+	MakeVykeaCouch();	//Glaciest
+	UseMeatSong(); 		//BoomBox
+	TakeNap();			//BoxingDayCare - item
+	GetBoxingBuff();	//BoxingDayCare - buff
 }
 
 void main()

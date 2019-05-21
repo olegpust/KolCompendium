@@ -64,7 +64,7 @@ void Buffme()
 		{
 			restore_mp(20);
 			use_skill(1, $skill[Cannelloni Cocoon]);
-			while(my_hp > 30 && timesToCastBond > 0)
+			while(my_hp() > 30 && timesToCastBond > 0)
 			{
 				use_skill(1,$skill[Blood Bond]);
 				timesToCastBond = timesToCastBond - 1;

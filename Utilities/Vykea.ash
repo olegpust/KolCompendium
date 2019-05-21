@@ -4,6 +4,10 @@
 script "Vykea.ash";
 #notify "Rufus Flecher";
 
+
+///
+/// Use mafia's couch api for creating a couch, buy the items before you try to craft it..
+///
 void MakeVykeaCouch()
 {
 	if(item_amount($item[VYKEA rail]) < 5)
@@ -18,6 +22,8 @@ void MakeVykeaCouch()
 		buy(1, $item[VYKEA hex key]);
 	if(item_amount($item[VYKEA frenzy rune]) < 1)
 		buy(1, $item[VYKEA frenzy rune]);
+	if(item_amount($item[VYKEA instructions]) < 1)
+		buy(1, $item[VYKEA instructions]);
 	cli_execute("create level 5 couch");
 }
 

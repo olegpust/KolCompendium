@@ -11,6 +11,7 @@ import <KolCompendium/Utilities/LoggoutOutfitter.ash>
 import <KolCompendium/Utilities/Overdrinker.ash>
 import <KolCompendium/Utilities/BarfMountainEater.ash>
 import <KolCompendium/Utilities/Buffer.ash>
+import <KolCompendium/Utilities/InventoryClearer.ash>
 import <KolCompendium/Tutorial Scripts/SetupIotms.ash>
 import <bastille.ash>
 import <VotingBooth.ash>
@@ -76,21 +77,29 @@ void main()
 	}
 	
 	setupIotms();
-	
-	while((my_adventures() > 20) && (my_inebriety() <= inebriety_limit()))
+	int adv_count = 0;
+	while((my_adventures() > 0) && (my_inebriety() <= inebriety_limit()))
 	{
 		if(my_mp() < 70){
 			restore_mp(70);
 		}
-		if(my_hp < 100) // Blood bond is a troublesome skill, so need to check youre not dying now too fast. More mp cost per round but better money gain.
+		if(adv_count == 25)
+		{ 	
+			//Recalculate best equipment coz scratch n sniff item might be broken.
+			cli_execute("maximize meat, +equip cheap sunglasses +equip Mafia thumb ring -tie");
+		}
+		if(my_hp() < 100) // Blood bond is a troublesome skill, so need to check youre not dying now too fast. More mp cost per round but better money gain.
 			use_skill(1, $skill[Cannelloni Cocoon]); 
 		boolean retval = adv1($location[Barf Mountain], 1,'');
+		adv_count++;
 	}
-		
+	
 	doMaintFunds();
 
+	CleanMeatItems();
+	
 	WearLoggoutSuit();
 
-	//Nightcap();
+	Nightcap();
 	
 }

@@ -6,8 +6,72 @@ script "BarfMountainEater.ash";
 
 #import <zlib.ash>
 
+void EatChocolate(int count)
+{
+	// Cannot use more than 3 per day..
+	if(count > 0 && count < 4)
+	{
+		item chocolateTool;
+		boolean classFlag = false;
+		if(my_class() == $class[Accordion Thief])
+		{
+			chocolateTool = $item[chocolate stolen accordion];
+			classFlag = true;
+		}
+		else if(my_class() == $class[Turtle Tamer])
+		{
+			chocolateTool = $item[chocolate turtle totem];
+			classFlag = true;
+		}
+		else if(my_class() == $class[Seal Clubber])
+		{
+			chocolateTool = $item[chocolate seal-clubbing club];
+			classFlag = true;
+		}
+		else if(my_class() == $class[Disco Bandit])
+		{
+			chocolateTool = $item[chocolate disco ball];
+			classFlag = true;
+		}
+		// TODO: Add support for last 2 classes. Maybe have a global class parameter?
+		
+		// Was able to determine my class.
+		if(count > 0 && classFlag)
+		{
+			if(available_amount(chocolateTool) < count)
+			{
+				buy(count, chocolateTool);
+			}
+			if(available_amount(chocolateTool) >= 1)
+			{
+				use(count, chocolateTool);
+				print("Ate chocolate accordion", "Green");
+			}
+		}
+	}
+}
+
 void FillSelfWithGoodness()
 {
+	//Spleen and buff time:
+	print("Spleening..", "Green");
+	if(have_effect($effect[Smithsness Presence]) <= 490)
+	{
+		if(item_amount($item[handful of Smithereens]) < 5)
+			buy(5 - item_amount($item[handful of Smithereens]), $item[handful of Smithereens]);
+		chew(5, $item[handful of Smithereens]);
+	}
+	if(have_effect($effect[Merry Smithsness]) <= 500)
+	{
+		if(item_amount($item[Flaskfull of Hollow]) < 4)
+			buy(4 - item_amount($item[Flaskfull of Hollow]), $item[Flaskfull of Hollow]);
+		use(4, $item[Flaskfull of Hollow]);	
+	}
+	
+	if(item_amount($item[carrot juice]) <3)
+		buy(3, $item[carrot juice]);
+	chew(3, $item[carrot juice]);
+	
 	if(my_fullness() !=  fullness_limit())
 	{
 		if(item_amount($item[milk of magnesium]) == 0)
@@ -37,16 +101,26 @@ void FillSelfWithGoodness()
 		
 		if(fullness_limit() - my_fullness() > 5)
 		{
-			if(item_amount($item[karma shawarma]) < 1)
+			if(item_amount($item[extra-greasy slider]) < 1)
 			{
-				buy(1, $item[karma shawarma]);
+				buy(1, $item[extra-greasy slider]);
 			}
-			eat(1, $item[karma shawarma]);
+			if(item_amount($item[Ol' Scratch's salad fork]) < 1)
+			{
+				buy(1, $item[Ol' Scratch's salad fork]);
+			}
+			maximize("hot resistance", false);
+			eat(1, $item[extra-greasy slider]);
 		}
 		if(item_amount($item[meteoreo]) < fullness_limit() - my_fullness())
 			buy(fullness_limit() - my_fullness() - item_amount($item[meteoreo]) , $item[meteoreo]);
 		eat(fullness_limit() - my_fullness(), $item[meteoreo]);	
 	}
+	
+	//Cleared some spleen room from the slider. Fill it with juice.
+	if(item_amount($item[carrot juice]) <2)
+		buy(2, $item[carrot juice]);
+	chew(2, $item[carrot juice]);
 	
 	if(inebriety_limit() != my_inebriety())
 	{
@@ -82,47 +156,9 @@ void FillSelfWithGoodness()
 		drink(inebriety_limit()-my_inebriety(), $item[elemental caipiroska]);
 	}
 	
-	//Spleen and buff time:
-	print("Spleening..", "Green");
-	if(have_effect($effect[Smithsness Presence]) <= 490)
-	{
-		if(item_amount($item[handful of Smithereens]) < 5)
-			buy(5 - item_amount($item[handful of Smithereens]), $item[handful of Smithereens]);
-		chew(5, $item[handful of Smithereens]);
-	}
-	if(have_effect($effect[Merry Smithsness]) <= 400)
-	{
-		if(item_amount($item[Flaskfull of Hollow]) < 3)
-			buy(3 - item_amount($item[Flaskfull of Hollow]), $item[Flaskfull of Hollow]);
-		use(3, $item[Flaskfull of Hollow]);	
-	}
+	EatChocolate(1); // At the current rate, not making enough money to use 2 a day.
 	
-	//Fill yourself on Nasal spray, because its cheap.
-	//if(have_effect($effect[Wasabi Sinuses]) < 10)
-	//{
-	//	if(item_amount($item[Knob Goblin nasal spray]) < spleen_limit() - my_spleen_use())
-	//		buy(spleen_limit() - my_spleen_use() - item_amount($item[Knob Goblin nasal spray]), $item[Knob Goblin nasal spray]);
-	//	chew(spleen_limit() - my_spleen_use(), $item[Knob Goblin nasal spray]);
-	//}
-	if(item_amount($item[carrot juice]) <3)
-		buy(3, $item[carrot juice]);
-	chew(3, $item[carrot juice]);
-	
-	if(my_class() == $class[Accordion Thief])
-	{
-		item it = $item[chocolate stolen accordion];
-		if(available_amount(it) < 1)
-		{
-			buy(1, it);
-		}
-		if(available_amount(it) >= 1)
-		{
-			use(1, it);
-			print("Ate chocolate accordion", "Green");
-		}
-	}
-	print("**Burp**", "Green");
-	
+	print("**Burp**", "Green");	
 }
 
 void main()

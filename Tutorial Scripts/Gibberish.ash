@@ -22,10 +22,12 @@ void run()
 	//string page = visit_url("place.php?whichplace=airport_stench&action=airport3_tunnels");
 	//page = visit_url("choice.php?whichchoice=1067&option=6");
 	
-	//set_location(Mysterious Island Arena);
-	
-	string page = visit_url("place.php?whichplace=town_wrong&action=townwrong_boxingdaycare", false);
-	page = visit_url("choice.php?pwd=&whichchoice=1334&option=1");
+	//set_location($location[Mysterious Island Arena]);
+	//https://www.kingdomofloathing.com/postwarisland.php?place=concert
+	//string page = visit_url("postwarisland.php?place=concert?option=2",true); //TODO: Try this out!
+	//print(page);
+	string page = visit_url("friars.php?bro=1"); //TODO: Try this out!
+	print(page);
 }
 
 /*

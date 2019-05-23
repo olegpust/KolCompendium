@@ -77,6 +77,7 @@ void main()
 	}
 	
 	setupIotms();
+	
 	int adv_count = 0;
 	while((my_adventures() > 0) && (my_inebriety() <= inebriety_limit()))
 	{

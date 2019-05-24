@@ -40,12 +40,12 @@ void EatChocolate(int count)
 		{
 			if(available_amount(chocolateTool) < count)
 			{
-				buy(count, chocolateTool);
+				buy(count - available_amount(chocolateTool), chocolateTool);
 			}
-			if(available_amount(chocolateTool) >= 1)
+			if(available_amount(chocolateTool) >= count)
 			{
 				use(count, chocolateTool);
-				print("Ate chocolate accordion", "Green");
+				print("Ate chocolate", "Green");
 			}
 		}
 	}
@@ -68,9 +68,9 @@ void FillSelfWithGoodness()
 		use(4, $item[Flaskfull of Hollow]);	
 	}
 	
-	if(item_amount($item[carrot juice]) <3)
-		buy(3, $item[carrot juice]);
-	chew(3, $item[carrot juice]);
+	if(item_amount($item[coffee pixie stick]) <2)
+		buy(2, $item[coffee pixie stick]); // TODO: Change to buying from special trader this part.
+	chew(2, $item[coffee pixie stick]);
 	
 	if(my_fullness() !=  fullness_limit())
 	{
@@ -156,7 +156,7 @@ void FillSelfWithGoodness()
 		drink(inebriety_limit()-my_inebriety(), $item[elemental caipiroska]);
 	}
 	
-	EatChocolate(1); // At the current rate, not making enough money to use 2 a day.
+	EatChocolate(2); // At the current rate, not making enough money to use 3 a day.
 	
 	print("**Burp**", "Green");	
 }

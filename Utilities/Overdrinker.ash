@@ -32,12 +32,12 @@ void Nightcap()
 		equip($item[mafia pinky ring]);
 		
 		int size1 = available_amount($item[elemental caipiroska]);
-		int size6 = available_amount($item[bucket of wine]);
+		int size10 = available_amount($item[bucket of wine]);
 		if(size1 < 1)
 			buy(1 , $item[elemental caipiroska]);
 		drink(1, $item[elemental caipiroska]);
 		
-		if(size6 < 1)
+		if(size10 < 1)
 			buy(1 , $item[bucket of wine]);
 		drink(1, $item[bucket of wine]);
 	}

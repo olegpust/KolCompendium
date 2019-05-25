@@ -32,8 +32,25 @@ void run()
 	//string page = visit_url("inv_use.php?&which=1&whichitem=3323"); //TODO: Try this out!
 	//<select name=whichitem><option value=7772>"meat" stick (6)
 	//matcher whatToEat = create_matcher("Select an item:")//&which=1
-	maximize("hot resistance", false);
-	string page = visit_url("inv_eat.php?utensil=3323&pwd=" + my_hash() + "&which=1&whichitem=3327");
+	//maximize("hot resistance", false);
+	//string page = visit_url("inv_eat.php?utensil=3323&pwd=" + my_hash() + "&which=1&whichitem=3327");
+	
+	//Kramco
+	//string page = visit_url("choice.php?whichchoice=1339&pwd=" + my_hash() + "&qty=33&iid=25&option=1");
+	//page = visit_url("choice.php?whichchoice=1339&pwd=" + my_hash() + "&option=2");
+	
+	//meat paste:
+	//string page = visit_url("craft.php?action=makepaste&pwd=" + my_hash() + "&qty=1&whichitem=25");
+	
+	//Pot Meat
+	//string page = visit_url("clan_rumpus.php?action=click&spot=9&furni=3");
+	
+	//Concert.
+	//string page = visit_url("postwarisland.php?action=concert&pwd=" + my_hash() + "&option=2");
+	
+	//Clan rumpus room..
+	//string page = visit_url("clan_rumpus.php?preaction=jukebox&whichsong=1");
+	//string page = visit_url("clan_rumpus.php?preaction=ballpit");
 }
 
 /*

@@ -11,9 +11,11 @@ import <KolCompendium/Utilities/LoggoutOutfitter.ash>
 import <KolCompendium/Utilities/Overdrinker.ash>
 import <KolCompendium/Utilities/BarfMountainEater.ash>
 import <KolCompendium/Utilities/Buffer.ash>
+import <KolCompendium/Utilities/Kramco.ash>
 import <KolCompendium/Utilities/InventoryClearer.ash>
 import <KolCompendium/Tutorial Scripts/SetupIotms.ash>
 import <bastille.ash>
+import <Party.ash>
 import <VotingBooth.ash>
 
 //predefine function
@@ -31,21 +33,26 @@ void doMaintFunds()
 
 void main()
 {
-
+	int eatedSausagesToday = 2; // Start from 2 for buffer..
 	doDailyDeeds();
 	voteInVotingBooth();
+	Kramco(8);
 	
-	//Use muscle setup due to use of brutal brogues for +8 wt.
+	//Use muscle setup due to use of brutal brogues for +8 wt. TODO: Subject to change..
 	main@bastille("muscle");
-	Buffme();
 	
 	if(use_familiar($familiar[Cornbeefadon]))
 	{
 		FillSelfWithGoodness();
 	}
-
+	
+	//Calculate how many turns of buff i need before i start adventuring.. assuming i dont over-adventure due to sheer luck.
+	int numOfTurnsForBuffing = my_adventures() * 1.15;
+	numOfTurnsForBuffing /= 20;
+	numOfTurnsForBuffing = numOfTurnsForBuffing * 20 + 20; // Normalize it to 
+	Buffme(numOfTurnsForBuffing);
+	
 	//Buy a dinsey pass if you dont have one:
-
 	item it = $item[8204];
 	if(available_amount(it) < 1)
 	{
@@ -71,6 +78,19 @@ void main()
 		use(1, it);
 	}
 
+	// NEP here while buffed and strong. Maximizing meat over other stuff..
+	if(use_familiar($familiar[Cornbeefadon]))
+	{
+		cli_execute("maximize meat, +neverending wallet chain +neverending wallet chain -tie");
+		// Start the NEP with health, so i dont die.
+		if(my_hp() < 500)
+		{
+			restore_mp(20);
+			use_skill(1, $skill[Cannelloni Cocoon]);
+		}
+		main@party("party free noquest");
+	}
+
 	//Take the best money familiar i have, which is not the hobo monkey..
 	if(use_familiar($familiar[Cornbeefadon]))
 	{
@@ -83,11 +103,27 @@ void main()
 	while((my_adventures() > 0) && (my_inebriety() <= inebriety_limit()))
 	{
 		if(my_mp() < 70){
-			restore_mp(70);
+			if(item_amount($item[magical sausage]) > 0 && eatedSausagesToday < 8)
+			{
+				eat(1, $item[magical sausage]);
+				eatedSausagesToday++;
+			}
+			else
+				restore_mp(70);
 		}
 		if(adv_count == 25)
 		{ 	
 			//Recalculate best equipment coz scratch n sniff item might be broken.
+			cli_execute("maximize meat, +equip cheap sunglasses +equip Mafia thumb ring -tie");
+		}
+		
+		//Switch to kramco if i think ill get a goblin..
+		if(KramcoExpectedGoblinTurn(adv_count))
+		{
+			cli_execute("maximize meat, +Kramco Sausage-o-Matic™ +equip cheap sunglasses +equip Mafia thumb ring -tie");
+		}
+		if(KramcoOneAfterExpectedGoblinTurn(adv_count))
+		{
 			cli_execute("maximize meat, +equip cheap sunglasses +equip Mafia thumb ring -tie");
 		}
 		if(my_hp() < 100) // Blood bond is a troublesome skill, so need to check youre not dying now too fast. More mp cost per round but better money gain.

@@ -61,7 +61,8 @@ void doDailyDeeds()
 			}
 		}
 	}
-
+	
+	string page = visit_url("clan_rumpus.php?action=click&spot=9&furni=3"); // Visit meat tree in clan hall.
 }
 
 void main()

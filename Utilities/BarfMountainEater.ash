@@ -51,8 +51,26 @@ void EatChocolate(int count)
 	}
 }
 
+void SliderCrammer()
+{
+	if(fullness_limit() - my_fullness() >= 5)
+	{
+		if(item_amount($item[extra-greasy slider]) < 1)
+		{
+			buy(1, $item[extra-greasy slider]);
+		}
+		if(item_amount($item[Ol' Scratch's salad fork]) < 1)
+		{
+				buy(1, $item[Ol' Scratch's salad fork]);
+		}
+		maximize("hot resistance", false);
+		string page = visit_url("inv_eat.php?utensil=3323&pwd=" + my_hash() + "&which=1&whichitem=3327");
+	}
+}
+
 void FillSelfWithGoodness()
 {
+	
 	//Spleen and buff time:
 	print("Spleening..", "Green");
 	if(have_effect($effect[Smithsness Presence]) <= 490)
@@ -71,9 +89,11 @@ void FillSelfWithGoodness()
 	if(item_amount($item[coffee pixie stick]) <2)
 		buy(2, $item[coffee pixie stick]); // TODO: Change to buying from special trader this part.
 	chew(2, $item[coffee pixie stick]);
-	
+
+
 	if(my_fullness() !=  fullness_limit())
 	{
+
 		if(item_amount($item[milk of magnesium]) == 0)
 		{
 			print("Getting milk", "Green");
@@ -95,32 +115,44 @@ void FillSelfWithGoodness()
 		}
 		
 		print("Munching..", "Green");
-		if(item_amount($item[jumping horseradish]) < 9 )
-		buy(9 - item_amount($item[jumping horseradish]) , $item[jumping horseradish]);
-		eat(9, $item[jumping horseradish]);
+		//if(item_amount($item[jumping horseradish]) < 9 )
+		//buy(9 - item_amount($item[jumping horseradish]) , $item[jumping horseradish]);
+		//eat(9, $item[jumping horseradish]);
 		
-		if(fullness_limit() - my_fullness() > 5)
-		{
-			if(item_amount($item[extra-greasy slider]) < 1)
-			{
-				buy(1, $item[extra-greasy slider]);
-			}
-			if(item_amount($item[Ol' Scratch's salad fork]) < 1)
-			{
-				buy(1, $item[Ol' Scratch's salad fork]);
-			}
-			maximize("hot resistance", false);
-			eat(1, $item[extra-greasy slider]);
-		}
-		if(item_amount($item[meteoreo]) < fullness_limit() - my_fullness())
-			buy(fullness_limit() - my_fullness() - item_amount($item[meteoreo]) , $item[meteoreo]);
-		eat(fullness_limit() - my_fullness(), $item[meteoreo]);	
+		SliderCrammer();
+
+		if(item_amount($item[coffee pixie stick]) <1)
+			buy(1, $item[coffee pixie stick]); // TODO: Change to buying from special trader this part.
+		chew(1, $item[coffee pixie stick]);
+	
+		
+		SliderCrammer();
+		
+		if(item_amount($item[coffee pixie stick]) <2)
+			buy(2, $item[coffee pixie stick]); // TODO: Change to buying from special trader this part.
+		chew(2, $item[coffee pixie stick]);
+		
+		SliderCrammer();
+		
+		if(item_amount($item[coffee pixie stick]) <1)
+			buy(1, $item[coffee pixie stick]); // TODO: Change to buying from special trader this part.
+		chew(1, $item[coffee pixie stick]);
+		if(item_amount($item[nasty snuff]) <1)
+			buy(1, $item[nasty snuff]); // TODO: Change to buying from special trader this part.
+		chew(1, $item[nasty snuff]);
+		//if(item_amount($item[meteoreo]) < fullness_limit() - my_fullness())
+		//	buy(fullness_limit() - my_fullness() - item_amount($item[meteoreo]) , $item[meteoreo]);
+		//eat(fullness_limit() - my_fullness(), $item[meteoreo]);	
 	}
 	
-	//Cleared some spleen room from the slider. Fill it with juice.
-	if(item_amount($item[carrot juice]) <2)
-		buy(2, $item[carrot juice]);
-	chew(2, $item[carrot juice]);
+	//Cleared some spleen room from the slider. Fill it with juice and pixie sticks.
+	
+	//if(item_amount($item[coffee pixie stick]) <1)
+	//	buy(1, $item[coffee pixie stick]); // TODO: Change to buying from special trader this part.
+	//chew(1, $item[coffee pixie stick]);
+	//if(item_amount($item[carrot juice]) <1)
+	//	buy(1, $item[carrot juice]);
+	//chew(1, $item[carrot juice]);
 	
 	if(inebriety_limit() != my_inebriety())
 	{
@@ -159,6 +191,7 @@ void FillSelfWithGoodness()
 	EatChocolate(2); // At the current rate, not making enough money to use 3 a day.
 	
 	print("**Burp**", "Green");	
+
 }
 
 void main()

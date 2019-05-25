@@ -26,8 +26,14 @@ void run()
 	//https://www.kingdomofloathing.com/postwarisland.php?place=concert
 	//string page = visit_url("postwarisland.php?place=concert?option=2",true); //TODO: Try this out!
 	//print(page);
-	string page = visit_url("friars.php?bro=1"); //TODO: Try this out!
-	print(page);
+	//string page = visit_url("friars.php?bro=1"); //TODO: Try this out!
+	//print(page);
+	//equip($item[mafia pinky ring]);
+	//string page = visit_url("inv_use.php?&which=1&whichitem=3323"); //TODO: Try this out!
+	//<select name=whichitem><option value=7772>"meat" stick (6)
+	//matcher whatToEat = create_matcher("Select an item:")//&which=1
+	maximize("hot resistance", false);
+	string page = visit_url("inv_eat.php?utensil=3323&pwd=" + my_hash() + "&which=1&whichitem=3327");
 }
 
 /*

@@ -45,6 +45,7 @@ void main()
 	}
 
 	//Buy a dinsey pass if you dont have one:
+
 	item it = $item[8204];
 	if(available_amount(it) < 1)
 	{
@@ -98,9 +99,8 @@ void main()
 	doMaintFunds();
 
 	CleanMeatItems();
-	
-	WearLoggoutSuit();
 
 	Nightcap();
 	
+	WearLoggoutSuit();	
 }

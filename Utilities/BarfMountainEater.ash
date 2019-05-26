@@ -64,6 +64,8 @@ void SliderCrammer()
 				buy(1, $item[Ol' Scratch's salad fork]);
 		}
 		maximize("hot resistance", false);
+		restore_mp(20);
+		use_skill(1, $skill[Cannelloni Cocoon]); 
 		string page = visit_url("inv_eat.php?utensil=3323&pwd=" + my_hash() + "&which=1&whichitem=3327");
 	}
 }

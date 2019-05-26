@@ -34,6 +34,7 @@ void doMaintFunds()
 void main()
 {
 	int eatedSausagesToday = 2; // Start from 2 for buffer..
+
 	doDailyDeeds();
 	voteInVotingBooth();
 	Kramco(8);
@@ -81,14 +82,14 @@ void main()
 	// NEP here while buffed and strong. Maximizing meat over other stuff..
 	if(use_familiar($familiar[Cornbeefadon]))
 	{
-		cli_execute("maximize meat, +neverending wallet chain +neverending wallet chain -tie");
+		cli_execute("maximize meat");
 		// Start the NEP with health, so i dont die.
 		if(my_hp() < 500)
 		{
 			restore_mp(20);
 			use_skill(1, $skill[Cannelloni Cocoon]);
 		}
-		main@party("party free noquest");
+		main@party("party noquest");
 	}
 
 	//Take the best money familiar i have, which is not the hobo monkey..
@@ -98,7 +99,7 @@ void main()
 	}
 	
 	setupIotms();
-	
+
 	int adv_count = 0;
 	while((my_adventures() > 0) && (my_inebriety() <= inebriety_limit()))
 	{
@@ -120,7 +121,7 @@ void main()
 		//Switch to kramco if i think ill get a goblin..
 		if(KramcoExpectedGoblinTurn(adv_count))
 		{
-			cli_execute("maximize meat, +Kramco Sausage-o-Matic™ +equip cheap sunglasses +equip Mafia thumb ring -tie");
+			cli_execute("maximize meat, +equip "+ $item[10058] +" +equip cheap sunglasses +equip Mafia thumb ring -tie");
 		}
 		if(KramcoOneAfterExpectedGoblinTurn(adv_count))
 		{
@@ -135,8 +136,13 @@ void main()
 	doMaintFunds();
 
 	CleanMeatItems();
-
-	Nightcap();
 	
-	WearLoggoutSuit();	
+	string page = visit_url("postwarisland.php?action=concert&pwd=" + my_hash() + "&option=2");
+	page = visit_url("clan_rumpus.php?preaction=jukebox&whichsong=1");
+	page = visit_url("clan_rumpus.php?preaction=ballpit");
+	eat(1, $item[magical sausage]);
+	
+	//Nightcap();
+	
+	//WearLoggoutSuit();	
 }

@@ -49,8 +49,8 @@ void run()
 	//string page = visit_url("postwarisland.php?action=concert&pwd=" + my_hash() + "&option=2");
 	
 	//Clan rumpus room..
-	//string page = visit_url("clan_rumpus.php?preaction=jukebox&whichsong=1");
-	//string page = visit_url("clan_rumpus.php?preaction=ballpit");
+	//page = visit_url("clan_rumpus.php?preaction=jukebox&whichsong=1");
+	//page = visit_url("clan_rumpus.php?preaction=ballpit");
 }
 
 /*

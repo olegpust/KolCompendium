@@ -53,6 +53,22 @@ void run()
 	//page = visit_url("clan_rumpus.php?preaction=ballpit");
 }
 
+void sticks(int count)
+{
+	if(item_amount($item[coffee pixie stick]) < count)
+		{
+			int ticketsCount = (count - item_amount($item[coffee pixie stick])) * 10;
+			if(item_amount($item[Game Grid ticket]) >= ticketsCount)
+			{
+				buy($coinmaster[Arcade Ticket Counter], count - item_amount($item[coffee pixie stick]), $item[coffee pixie stick]);
+			}
+			else
+			{
+				buy(ticketsCount - item_amount($item[Game Grid ticket]), $item[Game Grid ticket]);
+				buy($coinmaster[Arcade Ticket Counter], count - item_amount($item[coffee pixie stick]), $item[coffee pixie stick]);
+			}
+		}
+}
 /*
 void barfCSS(){
 	[garbage tourist]
@@ -73,4 +89,5 @@ void barfCSS(){
 void main()
 {
 	run();
+	//sticks(7);
 }

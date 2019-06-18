@@ -13,10 +13,16 @@ void KramcoSingle(int num)
 						// need 23 meat pastes for 222 points in grinder etc..
 	// Craft meat paste..					
 	string page = visit_url("craft.php?action=makepaste&pwd=" + my_hash() + 
-		"&qty=" + num + "&whichitem=25");
-	page = visit_url("choice.php?whichchoice=1339&pwd=" + my_hash() + 
-		"&qty=" + num + "&iid=25&option=1");
-	page = visit_url("choice.php?whichchoice=1339&pwd=" + my_hash() + "&option=2");
+		"&qty=" + num + "&whichitem=25");	
+	
+	set_property("choiceAdventure1339", 1);
+	//string pag = visit_url("choice.php&whichchoice=1339&pwd=" + my_hash() + "&qty=" + num+ "&iid=25&option=1");//
+	string pag = visit_url("choice.php?pwd&whichchoice=1339&qty=" + num+ "&iid=25&option=1");//
+	run_choice(1);
+	set_property("choiceAdventure1339", 2);
+	//wait(1);
+	//string pa = visit_url("choice.php&whichchoice=1339&pwd=" + my_hash() + "&option=2");
+	run_choice(2);
 }
 
 void Kramco(int num)
@@ -36,15 +42,21 @@ boolean KramcoExpectedGoblinTurn(int turn)
 {
 	if( turn == 0 ||
 		turn == 5 ||
-		turn == 7 ||
-		turn == 17 ||
-		turn == 27 ||
-		turn == 32 ||
-		turn == 36 ||
-		turn == 44 ||
-		turn == 54 ||
+		turn == 10 ||
+		turn == 20 ||
+		turn == 30 ||
+		turn == 50 ||
 		turn == 70 ||
-		turn == 90 )
+		turn == 90 ||
+		turn == 110 ||
+		turn == 140 ||
+		turn == 170 ||
+		turn == 200 ||
+		turn == 230 ||
+		turn == 260 ||
+		turn == 290 ||
+		turn == 320 
+		)
 		return true;
 	return false;	
 }
@@ -59,6 +71,7 @@ boolean KramcoOneAfterExpectedGoblinTurn(int turn)
 
 void main()
 {
-	//Kramco(8);
+	//KramcoSingle(8);
+	Kramco(5);
 }
 

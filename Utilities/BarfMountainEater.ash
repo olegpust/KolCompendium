@@ -51,6 +51,24 @@ void EatChocolate(int count)
 	}
 }
 
+void PixieConsumer(int count)
+{
+	if(item_amount($item[coffee pixie stick]) < count)
+		{
+			int ticketsCount = (count - item_amount($item[coffee pixie stick])) * 10;
+			if(item_amount($item[Game Grid ticket]) >= ticketsCount)
+			{
+				buy($coinmaster[Arcade Ticket Counter], count - item_amount($item[coffee pixie stick]), $item[coffee pixie stick]);
+			}
+			else
+			{
+				buy(ticketsCount - item_amount($item[Game Grid ticket]), $item[Game Grid ticket]);
+				buy($coinmaster[Arcade Ticket Counter], count - item_amount($item[coffee pixie stick]), $item[coffee pixie stick]);
+			}
+		}
+	chew(count, $item[coffee pixie stick]);
+}
+
 void SliderCrammer()
 {
 	if(fullness_limit() - my_fullness() >= 5)
@@ -88,9 +106,7 @@ void FillSelfWithGoodness()
 		use(4, $item[Flaskfull of Hollow]);	
 	}
 	
-	if(item_amount($item[coffee pixie stick]) <2)
-		buy(2, $item[coffee pixie stick]); // TODO: Change to buying from special trader this part.
-	chew(2, $item[coffee pixie stick]);
+	PixieConsumer(2);
 
 
 	if(my_fullness() !=  fullness_limit())
@@ -123,28 +139,18 @@ void FillSelfWithGoodness()
 		
 		SliderCrammer();
 
-		if(item_amount($item[coffee pixie stick]) <1)
-			buy(1, $item[coffee pixie stick]); // TODO: Change to buying from special trader this part.
-		chew(1, $item[coffee pixie stick]);
+		PixieConsumer(1);
 	
-		
 		SliderCrammer();
 		
-		if(item_amount($item[coffee pixie stick]) <2)
-			buy(2, $item[coffee pixie stick]); // TODO: Change to buying from special trader this part.
-		chew(2, $item[coffee pixie stick]);
-		
+		PixieConsumer(2);
+	
 		SliderCrammer();
 		
-		if(item_amount($item[coffee pixie stick]) <1)
-			buy(1, $item[coffee pixie stick]); // TODO: Change to buying from special trader this part.
-		chew(1, $item[coffee pixie stick]);
+		PixieConsumer(1);
 		if(item_amount($item[nasty snuff]) <1)
-			buy(1, $item[nasty snuff]); // TODO: Change to buying from special trader this part.
+			buy(1, $item[nasty snuff]); 
 		chew(1, $item[nasty snuff]);
-		//if(item_amount($item[meteoreo]) < fullness_limit() - my_fullness())
-		//	buy(fullness_limit() - my_fullness() - item_amount($item[meteoreo]) , $item[meteoreo]);
-		//eat(fullness_limit() - my_fullness(), $item[meteoreo]);	
 	}
 	
 	//Cleared some spleen room from the slider. Fill it with juice and pixie sticks.

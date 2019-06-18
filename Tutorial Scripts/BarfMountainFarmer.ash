@@ -12,6 +12,7 @@ import <KolCompendium/Utilities/Overdrinker.ash>
 import <KolCompendium/Utilities/BarfMountainEater.ash>
 import <KolCompendium/Utilities/Buffer.ash>
 import <KolCompendium/Utilities/Kramco.ash>
+import <KolCompendium/Utilities/Nep.ash>
 import <KolCompendium/Utilities/InventoryClearer.ash>
 import <KolCompendium/Tutorial Scripts/SetupIotms.ash>
 import <bastille.ash>
@@ -40,7 +41,7 @@ void main()
 	Kramco(8);
 	
 	//Use muscle setup due to use of brutal brogues for +8 wt. TODO: Subject to change..
-	main@bastille("muscle");
+	main@bastille("babar brutalist gesture");
 	
 	if(use_familiar($familiar[Cornbeefadon]))
 	{
@@ -79,6 +80,8 @@ void main()
 		use(1, it);
 	}
 
+	setupIotms();
+	
 	// NEP here while buffed and strong. Maximizing meat over other stuff..
 	if(use_familiar($familiar[Cornbeefadon]))
 	{
@@ -86,10 +89,16 @@ void main()
 		// Start the NEP with health, so i dont die.
 		if(my_hp() < 500)
 		{
-			restore_mp(20);
+			restore_mp(40);
 			use_skill(1, $skill[Cannelloni Cocoon]);
 		}
-		main@party("party noquest");
+		int t = 0;
+		while(t < 11)
+		{
+			t++;
+			restore_mp(32);
+			NepOnce();
+		}
 	}
 
 	//Take the best money familiar i have, which is not the hobo monkey..
@@ -97,8 +106,6 @@ void main()
 	{
 		cli_execute("maximize meat, +equip cheap sunglasses +equip Mafia thumb ring -tie");
 	}
-	
-	setupIotms();
 
 	int adv_count = 0;
 	while((my_adventures() > 0) && (my_inebriety() <= inebriety_limit()))
@@ -136,13 +143,13 @@ void main()
 	doMaintFunds();
 
 	CleanMeatItems();
-	
 	string page = visit_url("postwarisland.php?action=concert&pwd=" + my_hash() + "&option=2");
-	page = visit_url("clan_rumpus.php?preaction=jukebox&whichsong=1");
-	page = visit_url("clan_rumpus.php?preaction=ballpit");
+	string pag = visit_url("clan_rumpus.php?preaction=jukebox&whichsong=1");
+	string pa = visit_url("clan_rumpus.php?preaction=ballpit");
+	use_skill(1, $skill[Cannelloni Cocoon]); 
 	eat(1, $item[magical sausage]);
 	
-	//Nightcap();
+	Nightcap();
 	
-	//WearLoggoutSuit();	
+	WearLoggoutSuit();	
 }

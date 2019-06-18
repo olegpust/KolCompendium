@@ -39,7 +39,7 @@ void Nightcap()
 		
 		if(size10 < 1)
 			buy(1 , $item[bucket of wine]);
-		drink(1, $item[bucket of wine]);
+		overdrink(1, $item[bucket of wine]);
 	}
 }
 

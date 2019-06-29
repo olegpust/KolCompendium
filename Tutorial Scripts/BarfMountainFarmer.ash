@@ -38,7 +38,7 @@ void main()
 
 	doDailyDeeds();
 	voteInVotingBooth();
-	Kramco(8);
+	Kramco(10);
 	
 	//Use muscle setup due to use of brutal brogues for +8 wt. TODO: Subject to change..
 	main@bastille("babar brutalist gesture");
@@ -106,7 +106,8 @@ void main()
 	{
 		cli_execute("maximize meat, +equip cheap sunglasses +equip Mafia thumb ring -tie");
 	}
-
+	if(item_amount($item[photocopied monster]) > 0)
+		use(1, $item[photocopied monster]);
 	int adv_count = 0;
 	while((my_adventures() > 0) && (my_inebriety() <= inebriety_limit()))
 	{

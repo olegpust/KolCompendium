@@ -14,7 +14,7 @@ void KramcoSingle(int num)
 	// Craft meat paste..					
 	string page = visit_url("craft.php?action=makepaste&pwd=" + my_hash() + 
 		"&qty=" + num + "&whichitem=25");	
-	
+	page = visit_url("inventory.php?action=grind");
 	set_property("choiceAdventure1339", 1);
 	//string pag = visit_url("choice.php&whichchoice=1339&pwd=" + my_hash() + "&qty=" + num+ "&iid=25&option=1");//
 	string pag = visit_url("choice.php?pwd&whichchoice=1339&qty=" + num+ "&iid=25&option=1");//
@@ -72,6 +72,6 @@ boolean KramcoOneAfterExpectedGoblinTurn(int turn)
 void main()
 {
 	//KramcoSingle(8);
-	Kramco(5);
+	Kramco(8);
 }
 

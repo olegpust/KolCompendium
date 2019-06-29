@@ -6,6 +6,7 @@ script "SetupIotms.ash";
 import <KolCompendium/Utilities/BoomBox.ash>
 import <KolCompendium/Utilities/Vykea.ash>
 import <KolCompendium/Utilities/BoxingDayCare.ash>
+import <KolCompendium/Utilities/ClanVIPLounge.ash>
 
 void setupIotms()
 {
@@ -13,6 +14,7 @@ void setupIotms()
 	UseMeatSong(); 		//BoomBox
 	TakeNap();			//BoxingDayCare - item
 	GetBoxingBuff();	//BoxingDayCare - buff
+	DoVIPStuff(); 		//Clan VIP Lounge for meat farming.. 
 }
 
 void main()
